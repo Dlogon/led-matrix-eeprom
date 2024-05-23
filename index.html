@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 50px);
+            grid-template-rows: repeat(3, 50px);
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-grid button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .array-display {
+            margin: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .array-display div {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #000;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="button-grid">
+            <div></div>
+            <button onclick="moveUp()">↑</button>
+            <div></div>
+            <button onclick="moveLeft()">←</button>
+            <div></div>
+            <button onclick="moveRight()">→</button>
+            <div></div>
+            <button onclick="moveDown()">↓</button>
+            <div></div>
+        </div>
+        <button onclick="convertArrayToHex()">SAVE MOVEMENT</button>
+
+    </div>
+
+    <!-- <div>
+        <div class="button-grid">
+            <div></div>
+            <button onclick="moveUp2()">↑</button>
+            <div></div>
+            <button onclick="moveLeft2()">←</button>
+            <div></div>
+            <button onclick="moveRight2()">→</button>
+            <div></div>
+            <button onclick="moveDown2()">↓</button>
+            <div></div>
+        </div>
+    </div> -->
+</body>
+
+<script src="draw.js"></script>
+
+</html>
