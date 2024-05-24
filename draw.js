@@ -39,6 +39,7 @@ const generateArray = (size) => {
  * Move elements up
  */
 const moveUp = (save = false) => {
+    if (save) saveMovement();
     let size = data.length;
     for (let i = 1; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -49,7 +50,6 @@ const moveUp = (save = false) => {
         data[size - 1][j] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
-    if (save) saveMovement();
 
 }
 
@@ -57,6 +57,7 @@ const moveUp = (save = false) => {
  * Move elements down
  */
 const moveDown = (save = false) => {
+    if (save) saveMovement();
     let size = data.length;
     for (let i = size - 2; i >= 0; i--) {
         for (let j = 0; j < size; j++) {
@@ -67,13 +68,13 @@ const moveDown = (save = false) => {
         data[0][j] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
-    if (save) saveMovement();
 }
 
 /**
  * Move elements left
  */
 const moveLeft = (save = false) => {
+    if (save) saveMovement();
     let size = data.length;
     for (let i = 0; i < size; i++) {
         for (let j = 1; j < size; j++) {
@@ -84,13 +85,14 @@ const moveLeft = (save = false) => {
         data[i][size - 1] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
-    if (save) saveMovement();
 }
 
 /**
  * Move elements right
  */
 const moveRight = (save = false) => {
+    if (save) saveMovement();
+
     let size = data.length;
     for (let i = 0; i < size; i++) {
         for (let j = size - 2; j >= 0; j--) {
@@ -101,7 +103,7 @@ const moveRight = (save = false) => {
         data[i][0] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
-    if (save) saveMovement();
+
 }
 
 const addListeners = () => {
