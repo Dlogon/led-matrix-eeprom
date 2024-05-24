@@ -24,7 +24,6 @@ const drawGrid = (canvas, ctx, tileSize, highlightNum) => {
 };
 
 const generateArray = (size) => {
-    // Crear una matriz bidimensional inicializada con ceros
     let array = [];
     for (let i = 0; i < size; i++) {
         let row = [];
@@ -36,7 +35,9 @@ const generateArray = (size) => {
     return array;
 }
 
-// Función para mover elementos hacia arriba
+/**
+ * Move elements up
+ */
 const moveUp = () => {
     let size = data.length;
     for (let i = 1; i < size; i++) {
@@ -50,7 +51,9 @@ const moveUp = () => {
     drawGrid(canvas, ctx, tileSize);
 }
 
-// Función para mover elementos hacia abajo
+/**
+ * Move elements down
+ */
 const moveDown = () => {
     let size = data.length;
     for (let i = size - 2; i >= 0; i--) {
@@ -64,7 +67,9 @@ const moveDown = () => {
     drawGrid(canvas, ctx, tileSize);
 }
 
-// Función para mover elementos hacia la izquierda
+/**
+ * Move elements left
+ */
 const moveLeft = () => {
     let size = data.length;
     for (let i = 0; i < size; i++) {
@@ -79,7 +84,9 @@ const moveLeft = () => {
 
 }
 
-// Función para mover elementos hacia la derecha
+/**
+ * Move elements right
+ */
 const moveRight = () => {
     let size = data.length;
     for (let i = 0; i < size; i++) {
@@ -98,27 +105,69 @@ function binaryRowToHex(row) {
     // Convertir la fila binaria a una cadena de bits
     let binaryString = row.join('');
     // Convertir la cadena binaria a un número hexadecimal
-    let hexString = parseInt(binaryString, 2).toString(16).toUpperCase();
+    let hexString = parseInt(binaryString, 2).toString(16).toUpperCase().padStart(2, '0');
     return hexString;
 }
 
 function convertArrayToHex() {
     // Convertir cada fila de la matriz a hexadecimal
-    let hexArray = data.map(binaryRowToHex);
+    const hexArray = data.map(binaryRowToHex);
 
-    console.log(hexArray);
-    return hexArray;
+    const stringResult = hexArray.join('');
+    return stringResult;
 }
 
+const saveMovement = () => {
+
+    const stringResult = convertArrayToHex();
+    if (secontStr == 0) {
+        secontStr++;
+        const location = generateLocationString(currentMemoryLocation);
+        result = result + location + stringResult;
+        console.log(currentMemoryLocation);
+        console.log(location);
+    }
+    else {
+
+        secontStr++;
+        result = result + stringResult;
+        if (secontStr == 4) {
+            currentMemoryLocation += 2;
+            secontStr = 0;
+            result = result + '\n';
+        }
+    }
+
+    printResult();
+}
+
+const generateLocationString = (location) => {
+
+    const base16Location = parseInt(location).toString(16).toUpperCase();
+    const locationZeros = base16Location + '000';
+    const leftZerosToAdd = 7 - locationZeros.length;
+    const resultString = ':2'.padEnd(leftZerosToAdd + 2, '0') + locationZeros;
+
+    return resultString;
+}
+
+const printResult = () => {
+
+    const divResult = document.getElementById('generatedString');
+    divResult.innerText = result;
+};
+
 const size = 8;
-const canvas = document.createElement("canvas");
+var currentMemoryLocation = 0;
+var secontStr = 0;
+var result = '';
+const canvas = document.getElementById('theCanvas');
 canvas.width = canvas.height = 600;
 const ctx = canvas.getContext("2d");
 
 ctx.font = "11px courier";
 ctx.textBaseline = "top";
 const tileSize = canvas.width / size;
-const status = document.createElement("pre");
 let lastTile = -1;
 
 const data = generateArray(8);
@@ -126,8 +175,7 @@ const data = generateArray(8);
 drawGrid(canvas, ctx, tileSize);
 document.body.style.display = "flex";
 document.body.style.alignItems = "flex-start";
-document.body.appendChild(canvas);
-document.body.appendChild(status);
+//document.body.appendChild(canvas);
 
 canvas.addEventListener("mousemove", evt => {
     evt.target.style.cursor = "pointer";
@@ -152,7 +200,6 @@ canvas.addEventListener("click", evt => {
     const tileY = ~~(evt.offsetY / tileSize);
     data[tileY][tileX] = data[tileY][tileX] == 0 ? 1 : 0;
 
-    console.log(data);
 });
 
 canvas.addEventListener("mouseout", event => {
