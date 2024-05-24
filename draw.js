@@ -38,7 +38,7 @@ const generateArray = (size) => {
 /**
  * Move elements up
  */
-const moveUp = () => {
+const moveUp = (save = false) => {
     let size = data.length;
     for (let i = 1; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -49,12 +49,14 @@ const moveUp = () => {
         data[size - 1][j] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
+    if (save) saveMovement();
+
 }
 
 /**
  * Move elements down
  */
-const moveDown = () => {
+const moveDown = (save = false) => {
     let size = data.length;
     for (let i = size - 2; i >= 0; i--) {
         for (let j = 0; j < size; j++) {
@@ -65,12 +67,13 @@ const moveDown = () => {
         data[0][j] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
+    if (save) saveMovement();
 }
 
 /**
  * Move elements left
  */
-const moveLeft = () => {
+const moveLeft = (save = false) => {
     let size = data.length;
     for (let i = 0; i < size; i++) {
         for (let j = 1; j < size; j++) {
@@ -81,13 +84,13 @@ const moveLeft = () => {
         data[i][size - 1] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
-
+    if (save) saveMovement();
 }
 
 /**
  * Move elements right
  */
-const moveRight = () => {
+const moveRight = (save = false) => {
     let size = data.length;
     for (let i = 0; i < size; i++) {
         for (let j = size - 2; j >= 0; j--) {
@@ -98,7 +101,49 @@ const moveRight = () => {
         data[i][0] = 0;
     }
     drawGrid(canvas, ctx, tileSize);
+    if (save) saveMovement();
+}
 
+const addListeners = () => {
+    const moveUpButton = document.getElementById('move-up');
+    moveUpButton.addEventListener('click', () => {
+        moveUp();
+    });
+
+    const moveLeftButton = document.getElementById('move-left');
+    moveLeftButton.addEventListener('click', () => {
+        moveLeft();
+    });
+
+    const moveRightButton = document.getElementById('move-right');
+    moveRightButton.addEventListener('click', () => {
+        moveRight();
+    });
+
+    const moveDownButton = document.getElementById('move-down');
+    moveDownButton.addEventListener('click', () => {
+        moveDown();
+    });
+
+    const moveUpSaveButton = document.getElementById('move-up-save');
+    moveUpSaveButton.addEventListener('click', () => {
+        moveUp(true);
+    });
+
+    const moveLeftSaveButton = document.getElementById('move-left-save');
+    moveLeftSaveButton.addEventListener('click', () => {
+        moveLeft(true);
+    });
+
+    const moveRightSaveButton = document.getElementById('move-right-save');
+    moveRightSaveButton.addEventListener('click', () => {
+        moveRight(true);
+    });
+
+    const moveDownSaveButton = document.getElementById('move-down-save');
+    moveDownSaveButton.addEventListener('click', () => {
+        moveDown(true);
+    });
 }
 
 function binaryRowToHex(row) {
@@ -207,3 +252,5 @@ canvas.addEventListener("mouseout", event => {
     status.innerText = "";
     lastTile = -1;
 });
+
+addListeners();

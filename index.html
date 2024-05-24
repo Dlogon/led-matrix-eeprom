@@ -6,22 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="components/saveButton.js"></script>
 </head>
 
 <body>
     <div>
         <div class="button-grid">
             <div></div>
-            <button onclick="moveUp()">↑</button>
+            <button id="move-up">↑</button>
             <div></div>
-            <button onclick="moveLeft()">←</button>
+            <button id="move-left">←</button>
             <div></div>
-            <button onclick="moveRight()">→</button>
+            <button id="move-right">→</button>
             <div></div>
-            <button onclick="moveDown()">↓</button>
+            <button id="move-down">↓</button>
             <div></div>
         </div>
+        <br>
         <button onclick="saveMovement()">SAVE MOVEMENT</button>
+        <br>
+        <br>
+        <div class="button-grid">
+            <div></div>
+            <button id="move-up-save">↑<save-button /></button>
+            <div></div>
+            <button id="move-left-save">←<save-button /></button>
+            <div></div>
+            <button id="move-right-save">→<save-button /></button>
+            <div></div>
+            <button id="move-down-save">↓<save-button /></button>
+            <div></div>
+        </div>
+
+    </div>
+
+    <div>
 
     </div>
     <div>
