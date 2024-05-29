@@ -35,6 +35,14 @@ const generateArray = (size) => {
     return array;
 }
 
+const fillArray = (value = 0) => {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            data[i][j] = value;
+        }
+    }
+    drawGrid(canvas, ctx, tileSize);
+}
 /**
  * Move elements up
  */
@@ -145,6 +153,15 @@ const addListeners = () => {
     const moveDownSaveButton = document.getElementById('move-down-save');
     moveDownSaveButton.addEventListener('click', () => {
         moveDown(true);
+    });
+    const cleanButton = document.getElementById('clean');
+    cleanButton.addEventListener('click', () => {
+        fillArray(0);
+    });
+
+    const fillButton = document.getElementById('fill');
+    fillButton.addEventListener('click', () => {
+        fillArray(1);
     });
 }
 
