@@ -43,6 +43,22 @@ const fillArray = (value = 0) => {
     }
     drawGrid(canvas, ctx, tileSize);
 }
+
+const invert = () => {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            switch (data[i][j]) {
+                case 1:
+                    data[i][j] = 0;
+                    break;
+                case 0:
+                    data[i][j] = 1;
+                    break
+            }
+        }
+    }
+    drawGrid(canvas, ctx, tileSize);
+}
 /**
  * Move elements up
  */
@@ -162,6 +178,12 @@ const addListeners = () => {
     const fillButton = document.getElementById('fill');
     fillButton.addEventListener('click', () => {
         fillArray(1);
+    });
+
+
+    const invertButton = document.getElementById('invert');
+    invertButton.addEventListener('click', () => {
+        invert();
     });
 }
 
