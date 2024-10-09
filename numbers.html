@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Grid</title>
+    <style>
+        body {
+            display: flexbox;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 60px);
+            grid-gap: 10px;
+        }
+
+        .grid button {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            border: none;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .grid button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <!-- Letters from A to Z -->
+        <button onclick="handleHex('A')">A</button>
+        <button onclick="handleHex('B')">B</button>
+        <button onclick="handleHex('C')">C</button>
+        <button onclick="handleHex('D')">D</button>
+        <button onclick="handleHex('E')">E</button>
+        <button onclick="handleHex('F')">F</button>
+        <button onclick="handleHex('G')">G</button>
+        <button onclick="handleHex('H')">H</button>
+        <button onclick="handleHex('I')">I</button>
+        <button onclick="handleHex('J')">J</button>
+        <button onclick="handleHex('K')">K</button>
+        <button onclick="handleHex('L')">L</button>
+        <button onclick="handleHex('M')">M</button>
+        <button onclick="handleHex('N')">N</button>
+        <button onclick="handleHex('O')">O</button>
+        <button onclick="handleHex('P')">P</button>
+        <button onclick="handleHex('Q')">Q</button>
+        <button onclick="handleHex('R')">R</button>
+        <button onclick="handleHex('S')">S</button>
+        <button onclick="handleHex('T')">T</button>
+        <button onclick="handleHex('U')">U</button>
+        <button onclick="handleHex('V')">V</button>
+        <button onclick="handleHex('W')">W</button>
+        <button onclick="handleHex('X')">X</button>
+        <button onclick="handleHex('Y')">Y</button>
+        <button onclick="handleHex('Z')">Z</button>
+        <button onclick="handleHex(' ')"> </button>
+    </div>
+
+    <div style="display: flexbox;">
+        <div id="generatedString"></div>
+        <div id="readable" style="text-wrap: wrap;"></div>
+    </div>
+
+
+    <script src="utils.js"></script>
+
+    <script src="numbers.js"></script>
+
+</body>
+
+</html>

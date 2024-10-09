@@ -35,6 +35,30 @@ const generateArray = (size) => {
     return array;
 }
 
+const fillArray = (value = 0) => {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            data[i][j] = value;
+        }
+    }
+    drawGrid(canvas, ctx, tileSize);
+}
+
+const invert = () => {
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+            switch (data[i][j]) {
+                case 1:
+                    data[i][j] = 0;
+                    break;
+                case 0:
+                    data[i][j] = 1;
+                    break
+            }
+        }
+    }
+    drawGrid(canvas, ctx, tileSize);
+}
 /**
  * Move elements up
  */
@@ -146,6 +170,21 @@ const addListeners = () => {
     moveDownSaveButton.addEventListener('click', () => {
         moveDown(true);
     });
+    const cleanButton = document.getElementById('clean');
+    cleanButton.addEventListener('click', () => {
+        fillArray(0);
+    });
+
+    const fillButton = document.getElementById('fill');
+    fillButton.addEventListener('click', () => {
+        fillArray(1);
+    });
+
+
+    const invertButton = document.getElementById('invert');
+    invertButton.addEventListener('click', () => {
+        invert();
+    });
 }
 
 function binaryRowToHex(row) {
@@ -187,22 +226,6 @@ const saveMovement = () => {
 
     printResult();
 }
-
-const generateLocationString = (location) => {
-
-    const base16Location = parseInt(location).toString(16).toUpperCase();
-    const locationZeros = base16Location + '000';
-    const leftZerosToAdd = 7 - locationZeros.length;
-    const resultString = ':2'.padEnd(leftZerosToAdd + 2, '0') + locationZeros;
-
-    return resultString;
-}
-
-const printResult = () => {
-
-    const divResult = document.getElementById('generatedString');
-    divResult.innerText = result;
-};
 
 const size = 8;
 var currentMemoryLocation = 0;
