@@ -1,13 +1,13 @@
 <template>
   <UBadge
     :class="[{ clicked: isActive }]"
-    class="cell"
+    class="cell w-16 h-16 flex items-center justify-center"
     @click="handleClick"
   ></UBadge>
 </template>
 
 <script setup>
-import { computed, defineProps } from "vue";
+import { defineProps } from "vue";
 
 const props = defineProps({
   x: {
@@ -32,9 +32,6 @@ const handleClick = () => {
 
 <style scoped>
 .cell {
-  width: 50px;
-  height: 50px;
-  /* background-color: #3498db; */
   transition: transform 0.3s ease;
   border: #333 solid 1px;
 }
