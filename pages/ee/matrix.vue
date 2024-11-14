@@ -1,5 +1,5 @@
 <template>
   <div class="w-full">
-    <Board :size="8" />
+    <Board />
   </div>
 </template>
