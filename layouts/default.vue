@@ -10,6 +10,10 @@
         <div class="float-none"></div>
         <div class="float-right flex">
           <HeaderColorpicker />
+          <ClientOnly fallback-tag="span">
+            <HeaderThemeChange />
+          </ClientOnly>
+
           <HeaderLogin />
           <Suspense>
             <VisitCounter />
