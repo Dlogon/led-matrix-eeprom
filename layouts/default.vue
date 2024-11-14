@@ -11,6 +11,14 @@
         <div class="float-right flex">
           <HeaderColorpicker />
           <HeaderLogin />
+          <Suspense>
+            <VisitCounter />
+
+            <template #fallback>
+              Loading...
+              <div class="spinner"></div>
+            </template>
+          </Suspense>
         </div>
       </div>
       <div class="text-center text-xl">{{ title || "" }}</div>
@@ -34,6 +42,8 @@
 </template>
 
 <script setup>
+import VisitCounter from "~/components/VisitCounter.vue";
+
 const defineProps = {
   title: String,
 };
