@@ -1,53 +1,55 @@
 <template>
-  <div class="w-full flex">
-    <div class="w-1/2 p-1 m-1">
-      <URange
-        v-model="size"
-        :min="1"
-        :max="20"
-        label="Board size"
-        @change="initBoard"
-      />
-      <UInput v-model="size" label="Actual size" disabled />
-      <div class="grid grid-cols-3">
-        <button class="bg-red-600 rounded-lg" @click="reset">Reset</button>
-        <div></div>
-        <UButton @click="saveMovement">Save movement</UButton>
+  <div>
+    <div class="w-full flex">
+      <div class="w-1/2 p-1 m-1">
+        <URange
+          v-model="size"
+          :min="1"
+          :max="20"
+          label="Board size"
+          @change="initBoard"
+        />
+        <UInput v-model="size" label="Actual size" disabled />
+        <div class="grid grid-cols-3">
+          <button class="bg-red-600 rounded-lg" @click="reset">Reset</button>
+          <div></div>
+          <UButton @click="saveMovement">Save movement</UButton>
+        </div>
+      </div>
+      <div class="w-1/2 p-1 m-1 h-40 overflow-y-auto overflow-x-hidden">
+        <div class="w-full h-1/2 p-2 m-2 break-words whitespace-pre-wrap">
+          {{ result }}
+        </div>
       </div>
     </div>
-    <div class="w-1/2 p-1 m-1 h-40 overflow-y-auto overflow-x-hidden">
-      <div class="w-full h-1/2 p-2 m-2 break-words whitespace-pre-wrap">
-        {{ result }}
-      </div>
-    </div>
-  </div>
-  <div class="grid grid-cols-2">
-    <div class="w-full h-full">
-      <BoardMovementsPanel
-        @move-up="moveUp"
-        @move-down="moveDown"
-        @move-left="moveLeft"
-        @move-right="moveRight"
-      />
+    <div class="grid grid-cols-2">
+      <div class="w-full h-full">
+        <BoardMovementsPanel
+          @move-up="moveUp"
+          @move-down="moveDown"
+          @move-left="moveLeft"
+          @move-right="moveRight"
+        />
 
-      <BoardMovementsSavePanel
-        @move-up-save="moveUpSave"
-        @move-down-save="moveDownSave"
-        @move-left-save="moveLeftSave"
-        @move-right-save="moveRightSave"
-      />
-    </div>
-    <div>
-      <div class="board">
-        <div v-for="(row, y) in board" :key="y" class="row">
-          <BoardCell
-            v-for="(cell, x) in row"
-            :key="x"
-            :x="x"
-            :y="y"
-            :is-active="cell.isActive"
-            @cell-clicked="toggleActiveCell(x, y)"
-          />
+        <BoardMovementsSavePanel
+          @move-up-save="moveUpSave"
+          @move-down-save="moveDownSave"
+          @move-left-save="moveLeftSave"
+          @move-right-save="moveRightSave"
+        />
+      </div>
+      <div>
+        <div class="board">
+          <div v-for="(row, y) in board" :key="y" class="row">
+            <BoardCell
+              v-for="(cell, x) in row"
+              :key="x"
+              :x="x"
+              :y="y"
+              :is-active="cell.isActive"
+              @cell-clicked="toggleActiveCell(x, y)"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -67,12 +69,16 @@ const activeCells = ref<Array<{ x: number; y: number }>>([]);
 var currentMemoryLocation = 0;
 var secontStr = 0;
 
-const resultCookie = useCookie<string>("generatedString");
+const resultCookie = useCookie<string>("generatedString", {
+  default: () => "",
+});
 const result = ref(resultCookie.value || "");
 
-onBeforeMount(() => {
-  // initBoard();
-  reset(); // for clean cookie, it is not working
+// Removed unused window variable
+
+onMounted(() => {
+  initBoard();
+  //reset(); // for clean cookie, it is not working
 });
 
 const saveMovement = () => {
@@ -133,10 +139,7 @@ const binaryRowToHex = (row: Array<Cell>) => {
   return hexString;
 };
 
-const HexRowToBinary = (row: string) => {
-  const binaryRow = parseInt(row, 16).toString(2).padStart(8, "0");
-  return binaryRow;
-};
+// Removed unused HexRowToBinary function
 
 const initBoard = () => {
   board.value = [];
@@ -160,8 +163,6 @@ const toggleActiveCell = (x: number, y: number) => {
       (cell) => cell.x !== x || cell.y !== y
     );
   }
-  console.log("Board:", board.value);
-  console.log("Active Cells:", activeCells.value);
 };
 
 // Update active cells during movement

@@ -36,3 +36,7 @@
     <div></div>
   </div>
 </template>
+
+<script setup>
+const emits = defineEmits(["move-up", "move-down", "move-left", "move-right"]);
+</script>

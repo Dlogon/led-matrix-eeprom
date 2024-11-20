@@ -40,3 +40,12 @@
     <div></div>
   </div>
 </template>
+
+<script setup>
+const emits = defineEmits([
+  "move-up-save",
+  "move-down-save",
+  "move-left-save",
+  "move-right-save",
+]);
+</script>

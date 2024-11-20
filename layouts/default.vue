@@ -19,13 +19,15 @@
             <VisitCounter />
 
             <template #fallback>
-              Loading...
-              <div class="spinner"></div>
+              <div>
+                Loading...
+                <div class="spinner"></div>
+              </div>
             </template>
           </Suspense>
         </div>
       </div>
-      <div class="text-center text-xl">{{ title || "" }}</div>
+      <div class="text-center text-xl"></div>
     </header>
     <main
       class="flex-grow flex dark:bg-gray-800 bg-gray-200 dark:text-white text-gray-800"
