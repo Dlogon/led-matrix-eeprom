@@ -139,7 +139,10 @@ const binaryRowToHex = (row: Array<Cell>) => {
   return hexString;
 };
 
-// Removed unused HexRowToBinary function
+const HexRowToBinary = (row: string) => {
+  const binaryRow = parseInt(row, 16).toString(2).padStart(8, "0");
+  return binaryRow;
+};
 
 const initBoard = () => {
   board.value = [];
