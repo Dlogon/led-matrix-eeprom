@@ -16,11 +16,8 @@
           <UButton @click="saveMovement">Save movement</UButton>
         </div>
       </div>
-      <div class="w-1/2 p-1 m-1 h-40 overflow-y-auto overflow-x-hidden">
-        <div class="w-full h-1/2 p-2 m-2 break-words whitespace-pre-wrap">
-          {{ result }}
-        </div>
-      </div>
+
+      <SharedResultHexString :result="result" />
     </div>
     <div class="grid grid-cols-2">
       <div class="w-full h-full">
