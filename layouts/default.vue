@@ -15,16 +15,6 @@
           </ClientOnly>
 
           <HeaderLogin />
-          <Suspense>
-            <VisitCounter />
-
-            <template #fallback>
-              <div>
-                Loading...
-                <div class="spinner"></div>
-              </div>
-            </template>
-          </Suspense>
         </div>
       </div>
       <div class="text-center text-xl"></div>
@@ -35,20 +25,36 @@
       <slot />
     </main>
     <footer
-      class="bg-gray-800 text-white p-4 text-center fixed bottom-0 w-full"
+      class="bg-gray-800 text-white p-4 text-center fixed bottom-0 w-full flex justify-between items-center"
     >
-      <p>
+      <div></div>
+      <p class="flex items-center">
         2024
-        <a href="https://github.com/dlogon"
-          >Dlogon <UIcon name="grommet-icons:github"></UIcon
+        <a href="https://github.com/dlogon" class="ml-2"
+          >Dlogon <UIcon name="grommet-icons:github" class="ml-1"></UIcon
         ></a>
       </p>
+      <div>
+        <Suspense>
+          <div>
+            <VisitCounter />
+            <PageCounter />
+          </div>
+          <template #fallback>
+            <div>
+              Loading...
+              <div class="spinner"></div>
+            </div>
+          </template>
+        </Suspense>
+      </div>
     </footer>
   </div>
 </template>
 
 <script setup>
-import VisitCounter from "~/components/VisitCounter.vue";
+import PageCounter from "~/components/PageCounter.vue";
+import VisitCounter from "~/components/VisitorCounter.vue";
 
 const defineProps = {
   title: String,
