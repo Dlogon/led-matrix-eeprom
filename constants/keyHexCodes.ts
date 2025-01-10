@@ -25,5 +25,5 @@ export const segmentHex = {
   X: "76", // 01110110 (same as H)
   Y: "3B", // 01101110
   Z: "6D", // 01011011 (or similar configuration)
-  " ": "00", // 01110111
+  // " ": "00", // 01110111
 };

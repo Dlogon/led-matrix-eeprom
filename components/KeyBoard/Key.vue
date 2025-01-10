@@ -1,6 +1,6 @@
 <template>
   <UBadge
-    class="cell w-16 h-16 flex items-center justify-center"
+    class="cell flex items-center justify-center"
     @click="handleKeyButtonClick"
     >{{ props.keyLetter }}</UBadge
   >
