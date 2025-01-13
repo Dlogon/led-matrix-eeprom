@@ -25,6 +25,7 @@
     </div>
     <div class="w-full flex flex-col">
       <div class="w-full">
+        {{ result }}
         <SharedResultString :result="result" />
       </div>
       <div>
@@ -38,11 +39,25 @@
 import { segmentHex } from "../../constants/keyHexCodes";
 import { ref } from "vue";
 
+import { onMounted, onUnmounted } from "vue";
+
+function handleKeyPress(e: KeyboardEvent) {
+  console.log("Key pressed:", e.key);
+}
+
+onMounted(() => {
+  window.addEventListener("keypress", handleKeyPress);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keypress", handleKeyPress);
+});
+
 var currentMemoryLocation = 0;
 var numberOfLettersInLine = 0; // TODO CHANGE THIS, with the option of delete the last letter
 const result = ref("");
 const currentPhrase = ref("");
-var readableResult = "";
+var readableResult = ""; // TODO unused variable inherited from the original code
 
 const handleKeyButtonClick = (keyPusehd: {
   keyLetter: string;
