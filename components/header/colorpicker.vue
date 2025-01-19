@@ -24,9 +24,11 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-const color = ref("#3490dc");
+const defaultColor = "#3490dc";
 const isModalOpen = ref(false);
-const selectedColorCookie = useCookie("selectedColors");
+const selectedColorCookie = useCookie("selectedColors", {
+  default: () => defaultColor,
+});
 
 const colors = [
   "#3498db", // Blue
