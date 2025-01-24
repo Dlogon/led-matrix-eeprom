@@ -14,7 +14,7 @@
             <HeaderThemeChange />
           </ClientOnly>
 
-          <HeaderLogin />
+          <!-- <HeaderLogin /> -->
         </div>
       </div>
       <div class="text-center text-xl"></div>
@@ -37,7 +37,7 @@
       <div>
         <Suspense>
           <div>
-            <VisitCounter />
+            <VisitorCounter />
             <PageCounter />
           </div>
           <template #fallback>
@@ -54,9 +54,6 @@
 </template>
 
 <script setup>
-import PageCounter from "~/components/PageCounter.vue";
-import VisitCounter from "~/components/VisitorCounter.vue";
-
 const defineProps = {
   title: String,
 };
