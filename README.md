@@ -1,10 +1,75 @@
-# led-matrix-eeprom
+# Nuxt 3 Minimal Starter
 
-Generate AT28C64 Code for a 8x8 LED matrix
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-I take the canvas code and adapt for this project from
-[Here](https://stackoverflow.com/a/59555920/8186328)
+## Setup
 
-## TODO
+Make sure to install the dependencies:
 
-Before upload the HEX file, open with MAXLOADER, or the app that you'll use for upload the program, and save it again. This is because I can not find how to generate the last two bytes
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
