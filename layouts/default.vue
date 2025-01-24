@@ -50,6 +50,7 @@
       </div>
     </footer>
   </div>
+  <MyToast />
 </template>
 
 <script setup>
