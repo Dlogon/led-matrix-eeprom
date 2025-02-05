@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <SharedResultString :result="result" />
+      <SharedCopyToClipboard :result="result" />
     </div>
     <div class="grid grid-cols-2">
       <div class="w-full h-full">

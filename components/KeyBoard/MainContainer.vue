@@ -29,7 +29,7 @@
     <div class="w-full flex flex-col">
       <div class="w-full">
         {{ currentMemoryLocation }}
-        <SharedResultString :result="result" />
+        <SharedCopyToClipboard :result="result" />
       </div>
       <div>
         <SharedResultString :result="currentPhrase" />
