@@ -14,6 +14,15 @@
         </div>
       </NuxtLink>
     </div>
+    <div class="aspect-w-12 aspect-h-7 mt-4 md:mt-8">
+      <iframe
+        class="w-full h-full"
+        src="https://www.youtube.com/embed/5WH6xbH1iRQ"
+        frameborder="5"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
   </section>
 </template>
 
