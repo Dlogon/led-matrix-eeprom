@@ -1,75 +1,14 @@
-# Nuxt 3 Minimal Starter
+# Led Matrix Gen
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Generate the bytes (Hex) for an eemprom memory to select which leds highlight in specific memory position
 
-## Setup
+TODOs
 
-Make sure to install the dependencies:
+- [ ] Generate the last 2 bytes for the eemprom position
+- [ ] Bug when delete some letters
+- [ ] Generate animations
+- [ ] Add custom letters to the 7 leds display
 
-```bash
-# npm
-npm install
+## License
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
